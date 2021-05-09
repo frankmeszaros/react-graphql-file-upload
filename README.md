@@ -18,7 +18,7 @@ To start your Django server, In one terminal window run the following commands:
 
 To start your React client, in a separate terminal window and run the following commands:
 
-`$ cd client`
+`$ cd ui`
 
 `$ yarn install`
 
