@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+yapf = "*"
+pylint = "*"
+
+[packages]
+django = "*"
+graphene-django = "*"
+graphene-file-upload = "*"
+django-cors-headers = "*"
+boto3 = "*"
+django-storages = "*"
+
+[requires]
+python_version = "3.8"
