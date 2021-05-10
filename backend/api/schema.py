@@ -38,12 +38,19 @@ class FileUpload(graphene.Mutation):
     success = graphene.Boolean()
 
     def mutate(self, info, file, **kwargs):
-        # success = upload_file(file)
-        return FileUpload(success=True)
+        success = upload_file(file)
+        return FileUpload(success=success)
 
 
 class Mutation(graphene.ObjectType):
     file_upload = FileUpload.Field()
 
 
-schema = graphene.Schema(mutation=Mutation)
+class Query(graphene.ObjectType):
+    hello = graphene.String()
+
+    def resolve_hello(self, info, **kwargs):
+        return "Hello world"
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)

@@ -13,7 +13,6 @@ graphene-django = "*"
 graphene-file-upload = "*"
 django-cors-headers = "*"
 boto3 = "*"
-django-storages = "*"
 
 [requires]
 python_version = "3.8"

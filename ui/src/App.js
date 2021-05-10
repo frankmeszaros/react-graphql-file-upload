@@ -12,6 +12,8 @@ const UPLOAD_FILE = gql`
 
 function App() {
 	const [uploadFile, { loading, data }] = useMutation(UPLOAD_FILE);
+	const { fileUpload } = data || {};
+	const { success = false } = fileUpload || {};
 
 	const handleUploadFile = React.useCallback(
 		(event) => {
@@ -28,8 +30,8 @@ function App() {
 
 			<p>Upload a file below</p>
 
-			{loading && 'Uploading...'}
-			{data && data?.imageUpload?.success && 'File successfully uploaded!'}
+			{loading && 'Uploading file...'}
+			{success && 'File successfully uploaded!'}
 
 			<form onSubmit={handleUploadFile}>
 				<input name="fileUpload" type="file" />
