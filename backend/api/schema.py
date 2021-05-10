@@ -15,7 +15,7 @@ def upload_file(file):
     session_client_info = {
         "aws_access_key_id": settings.AWS_ACCESS_KEY_ID,
         "aws_secret_access_key": settings.AWS_SECRET_ACCESS_KEY,
-        "endpoint_url": "https://graphql-file-upload.nyc3.digitaloceanspaces.com",
+        "endpoint_url": settings.AWS_S3_ENDPOINT_URL,
         "region_name": "nyc3",
     }
 
@@ -31,19 +31,19 @@ def upload_file(file):
     return success
 
 
-class ImageUpload(graphene.Mutation):
+class FileUpload(graphene.Mutation):
     class Arguments:
         file = Upload(required=True)
 
     success = graphene.Boolean()
 
     def mutate(self, info, file, **kwargs):
-        success = upload_file(file)
-        return ImageUpload(success=success)
+        # success = upload_file(file)
+        return FileUpload(success=True)
 
 
 class Mutation(graphene.ObjectType):
-    image_upload = ImageUpload.Field()
+    file_upload = FileUpload.Field()
 
 
 schema = graphene.Schema(mutation=Mutation)
